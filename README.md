@@ -2,7 +2,7 @@
 
 ## INSTALLATION 
 ```
-$ noticepm install -g bower
+$ npm install -g bower
 ```
 
 
