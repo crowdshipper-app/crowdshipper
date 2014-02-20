@@ -1,18 +1,18 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://localhost/mean-dev",
+    db: "mongodb://localhost/crowdshipper",
     app: {
-        name: "MEAN - A Modern Stack - Development"
+        name: "CrowdShipper - Development"
     },
     facebook: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
+        clientID: "478257328941692",
+        clientSecret: "5c760b432c8524e3c06c22337279a8d7",
         callbackURL: "http://localhost:3000/auth/facebook/callback"
     },
     twitter: {
-        clientID: "CONSUMER_KEY",
-        clientSecret: "CONSUMER_SECRET",
+        clientID: "umUJfNFaSkiUmJYo3y2XDw",
+        clientSecret: "eOXsJyWebKYlnWhgPDMxI8HedpyDZSPnlZRWVBeTlg",
         callbackURL: "http://localhost:3000/auth/twitter/callback"
     },
     github: {

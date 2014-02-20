@@ -4,14 +4,13 @@ var mongoose = require('mongoose'),
     LocalStrategy = require('passport-local').Strategy,
     TwitterStrategy = require('passport-twitter').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
-    GitHubStrategy = require('passport-github').Strategy,
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
     User = mongoose.model('User'),
     config = require('./config');
 
 
 module.exports = function(passport) {
-    
+
     // Serialize the user id to push into the session
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -105,35 +104,6 @@ module.exports = function(passport) {
                         username: profile.username,
                         provider: 'facebook',
                         facebook: profile._json
-                    });
-                    user.save(function(err) {
-                        if (err) console.log(err);
-                        return done(err, user);
-                    });
-                } else {
-                    return done(err, user);
-                }
-            });
-        }
-    ));
-
-    // Use github strategy
-    passport.use(new GitHubStrategy({
-            clientID: config.github.clientID,
-            clientSecret: config.github.clientSecret,
-            callbackURL: config.github.callbackURL
-        },
-        function(accessToken, refreshToken, profile, done) {
-            User.findOne({
-                'github.id': profile.id
-            }, function(err, user) {
-                if (!user) {
-                    user = new User({
-                        name: profile.displayName,
-                        email: profile.emails[0].value,
-                        username: profile.username,
-                        provider: 'github',
-                        github: profile._json
                     });
                     user.save(function(err) {
                         if (err) console.log(err);
